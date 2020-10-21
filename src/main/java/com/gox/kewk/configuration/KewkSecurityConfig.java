@@ -14,6 +14,7 @@ public class KewkSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                     .antMatchers("/kewk").permitAll()
+                    .antMatchers("/actuator/**").permitAll()
                     .anyRequest().authenticated()
                 .and()
                     .formLogin()
