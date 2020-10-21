@@ -13,8 +13,10 @@ public class KewkSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+                    .antMatchers("/").permitAll()
                     .antMatchers("/kewk").permitAll()
-                    .antMatchers("/actuator/**").permitAll()
+                    .antMatchers("/god").hasRole("ADMIN")
+                    .antMatchers("/actuator/**").hasRole("ADMIN")
                     .anyRequest().authenticated()
                 .and()
                     .formLogin()
